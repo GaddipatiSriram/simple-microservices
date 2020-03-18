@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package User;
+
+option java_package = "com.proto.app1";
+option java_multiple_files = true;
+
+message UserCreate {
+    string first_name = 1;
+    string last_name = 2;
+}
+
+
+message UserCreateRequest {
+    UserCreate user = 1;
+}
+message UserCreateResponse {
+    string user_id = 1;
+}
+
+
+message UserInfo {
+    string user_id =1;
+}
+
+message UserInfoRequest {
+    UserInfo id = 1;
+}
+
+message UserInfoResponse {
+    string first_name = 1;
+    string last_name = 2;
+}
+
+
+service UserService {
+    rpc UserCreate(UserCreateRequest) returns(UserCreateResponse) {};
+    rpc UserInfo(UserInfoRequest) returns (UserInfoResponse) {};
+}

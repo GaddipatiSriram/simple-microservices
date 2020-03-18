@@ -2,9 +2,12 @@ plugins {
     id 'java'
     id 'com.google.protobuf' version '0.8.10'
     id 'idea'
+    id 'org.springframework.boot' version '2.2.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+
 }
 
-group 'org.example'
+group 'org.app1'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -35,6 +38,10 @@ dependencies {
     implementation 'io.grpc:grpc-netty-shaded:1.27.2'
     implementation 'io.grpc:grpc-protobuf:1.27.2'
     implementation 'io.grpc:grpc-stub:1.27.2'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
 }
 
 // if you have source imports issues, add the below
@@ -44,4 +51,8 @@ idea {
         // Marks the already(!) added srcDir as "generated"
         generatedSourceDirs += file('build/generated/source')
     }
+}
+
+test {
+    useJUnitPlatform()
 }

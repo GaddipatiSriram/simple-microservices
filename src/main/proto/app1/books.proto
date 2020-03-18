@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package books;
+
+option java_package = "com.proto.books";
+option java_multiple_files = true;
+
+message BuyBookRequest {
+    string book_name = 1;
+    string book_id  =2;
+}
+
+message OrderDetails{
+    string price =1;
+    string confirmation_number =2;
+    string est_delivery_date = 3;
+}
+
+message BuyBookResponse {
+    OrderDetails order = 1 ;
+}
+
+message SellBookRequest {
+
+}
+
+message SellBookResponse {
+
+}
+service BookService {
+    rpc UserCreate(BuyBookRequest) returns(BuyBookRequest) {};
+}
+
+
+
